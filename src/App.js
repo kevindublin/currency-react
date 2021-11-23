@@ -31,10 +31,10 @@ function App() {
   }
 
   function removeCountry(index) {
-    // Get the chaser and add to the end of available
+    // Get the country and add to the end of available
     const country = chosenCountries[index];
     setAvailableCountries([
-      ...availableCountries, // include existing characters
+      ...availableCountries, // include existing countries
       country,           // and the new one
     ]);
 
@@ -60,6 +60,10 @@ function App() {
       });
   }
  useEffect(doFetch, []);
+ useEffect(() => {
+    console.log("current selection: ", [...chosenCountries]);
+
+  }, []);
 
   return (
     <div className="App">
@@ -78,7 +82,7 @@ function App() {
           {isLoading ? <div className="loading"></div> : null}
           <div className="BarChart">
             <div className="BarChart-bar">
-            {
+            { 
               currencyResult.map(item => (
               <div className={`BarChart-bar ${item[0]}`} style={{height: getHeight(item[1])}}>
                 <h1 className= "BarChart--title">{item[0]}</h1>
