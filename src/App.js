@@ -66,33 +66,26 @@ function App() {
         <header className="Header">
             <h1 className="Header-title">CURRENCY</h1>
         </header>
-          
+        <div> 
           {
             currencyResult.map(item => (
-              <div>
-                <button className= "BarChart--title" onClick={() => onChooseCountry(item)}>{item[0]}</button> 
-              </div>
-              ))
-          }
-          {
-            currencyResult.map(item => (
-              <div>
-                <button className= "BarChart--title" onClick={() => removeCountry(item)}>{item[0]}</button> 
-              </div>
+                <button className= "special" onClick={() => onChooseCountry(item)}>{item[0]}</button> 
               ))
           }
 
+        </div>
         <main className="MainContainer">
           {isLoading ? <div className="loading"></div> : null}
           <div className="BarChart">
             <div className="BarChart-bar">
-            {currencyResult.map(item => (
+            {
+              currencyResult.map(item => (
               <div className={`BarChart-bar ${item[0]}`} style={{height: getHeight(item[1])}}>
                 <h1 className= "BarChart--title">{item[0]}</h1>
                 <p>{item[1]}</p> 
               </div>
               ))
-          }
+            }
             </div>
           </div>
         </main>
